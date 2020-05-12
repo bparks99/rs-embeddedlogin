@@ -41,7 +41,7 @@
       </div>
     </header>
     <section class="textured-section">
-      <h1>Curated Coffee Components</h1>
+      <h1>Brians Coffee Components</h1>
       
 
       <ul class="products">
