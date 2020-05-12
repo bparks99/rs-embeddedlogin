@@ -19,6 +19,7 @@
     <meta name="salesforce-save-access-token" content="true">
     <meta name="salesforce-forgot-password-enabled" content="<?php echo getenv('SALESFORCE_FORGOT_PASSWORD_ENABLED');?>">
     <meta name="salesforce-self-register-enabled" content="<?php echo getenv('SALESFORCE_SELF_REGISTER_ENABLED');?>">
+    <meta name="salesforce_self_register_starturl_enabled" content="<?php echo getenv('SALESFORCE_SELF_REGISTER_STARTURL_ENABLED');?>">
     <meta name="salesforce-login-handler" content="onLogin">
     <meta name="salesforce-logout-handler" content="onLogout">
     <meta name="salesforce-mask-redirects" content="<?php echo getenv('SALESFORCE_MASK_REDIRECTS');?>">
@@ -41,7 +42,7 @@
       </div>
     </header>
     <section class="textured-section">
-      <h1>Brians Coffee Components</h1>
+      <h1>Brian's Coffee Components</h1>
       
 
       <ul class="products">
