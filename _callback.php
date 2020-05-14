@@ -6,6 +6,9 @@
 	<meta name="salesforce-save-access-token" content="true">
 	<meta name="salesforce-allowed-domains" content="<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>">
 	<script src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/servlet/servlet.loginwidgetcontroller?type=javascript_widget" async defer></script>
+	<script type="text/javascript">
+    window.location = "newpage.html";
+	</script>
 </head> 
 <body></body>    
 </html>
