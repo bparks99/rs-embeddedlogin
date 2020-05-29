@@ -29,6 +29,7 @@
   
   <body>
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
+	<div id="reg-link" style="position: absolute; top: 45px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="SFIDWidget.r();">Registration</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
