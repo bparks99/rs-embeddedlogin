@@ -29,7 +29,7 @@
   
   <body>
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
-	<div id="reg-link" style="position: absolute; top: 45px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="SFIDWidget.r();">Registration</button></div>
+	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="startRegistration();">Registration</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
@@ -245,7 +245,38 @@
 
 	}
 
+	function startRegistration() {
+		var lightbox = document.createElement('div'); 
+	 	lightbox.className = "sfid-lightbox";
+	 	lightbox.id = "sfid-reg-overlay";
+		lightbox.setAttribute("onClick", "cancelReg();");
+		
+		var wrapper = document.createElement('div'); 
+	 	wrapper.id = "identity-wrapper";
+		wrapper.onclick = function(event) {
+		    event = event || window.event // cross-browser event
+    
+		    if (event.stopPropagation) {
+		        // W3C standard variant
+		        event.stopPropagation()
+		    } else {
+		        // IE variant
+		        event.cancelBubble = true
+		    }
+		}
+		
+		var t = document.createElement('div'); 
+	 	t.id = "sfid-content";
+		
+	}
 
+	function cancelReg() {
+                var e = document.getElementById("sfid-reg-overlay");
+                e.style.display = "none";
+                var t = document.getElementById("sfid-reg-button");
+                e.parentNode && e.parentNode.removeChild(e),
+                t && t.focus()
+    }
 	</script>
 	
   </body>
