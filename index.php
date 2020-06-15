@@ -268,7 +268,11 @@
 		var t = document.createElement('div'); 
 	 	t.id = "sfid-content";
 		
-	}
+		xhttp.open("POST", "https://roadscholar--devtom.lightning.force.com/services/apexrest/SelfReg/V1/", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("firstname=Test147&lastname=Tester&email=rstest147%40mailinator.com&source_code=abc123&password=password147&confirmPassword=password147&startUrl=https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php&includePassword=true");
+		
+	}		
 
 	function cancelReg() {
                 var e = document.getElementById("sfid-reg-overlay");
