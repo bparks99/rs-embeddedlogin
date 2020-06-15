@@ -276,11 +276,12 @@
 				console.log(xhttp.response);
 			};
 		};
-		xhttp.open("POST", "https://roadscholar--devtom.lightning.force.com/services/apexrest/SelfReg/V1/", true);
+		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/SelfReg/V1/", true);
 		xhttp.setRequestHeader("Content-type", "text/plain");
+		xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
-		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With");
+		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
 		xhttp.send("firstname=Test147&lastname=Tester&email=rstest147%40mailinator.com&source_code=abc123&password=password147&confirmPassword=password147&startUrl=https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php&includePassword=true");
 	}		
 
