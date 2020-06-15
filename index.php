@@ -277,7 +277,7 @@
 			};
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/SelfReg/V1/", true);
-		xhttp.setRequestHeader("Content-type", "text/plain");
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
