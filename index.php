@@ -282,7 +282,7 @@
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
-		xhttp.send(JSON.stringify({"firstname" : "Test147", "lastname" : "Tester", "email" : "rstest147@mailinator.com", "source_code" : "abc123", "password" : "password147", "confirmPassword" : "password147", "startUrl" : "https://rs-embeddedlogin.herokuapp.com/_callback.php", "includePassword" : true}));
+		xhttp.send(JSON.stringify({"firstname" : "Test149", "lastname" : "Tester", "email" : "rstest149@mailinator.com", "source_code" : "abc123", "password" : "password149", "confirmPassword" : "password149", "startUrl" : "https://rs-embeddedlogin.herokuapp.com/_callback.php", "includePassword" : true}));
 	}		
 
 	function cancelReg() {
