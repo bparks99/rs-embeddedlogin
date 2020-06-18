@@ -479,17 +479,18 @@
                     var e = this.DONE || 4;
                     if (this.readyState === e) {
                         var t = JSON.parse(i.responseText);
-                        if ("invalid" === t.result)
+                        if ("invalid" === t.result) {
                             showError(), document.getElementById("sfid-regsubmit").disabled = !1, document.getElementById("sfid-regsubmit").className = "sfid-button sfid-wide sfid-mb16";
 							alert('Invalid REsponse from Login Server');
-                        else if ("true" === SFIDWidget.config.maskRedirects) {
+                        } else if ("true" === SFIDWidget.config.maskRedirects) {
                             var n = document.createElement("iframe");
                             n.setAttribute("src", t.result),
                             n.className = "sfid-callback",
                             n.id = "sfid-callback",
-                            document.body.appendChild(n)
-                        } else
+						document.body.appendChild(n) }
+                        } else {
                             window.location.replace(t.result)
+						}
                     }
                 },
                 i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL))
