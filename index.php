@@ -311,7 +311,7 @@
             var pwl = document.createElement("LABEL");
             pwl.innerText = "Create a Password",
             pwl.htmlFor = pw.id,
-            pwl.className = "sfid-button-label",
+            pwl.className = "sfid-button-label";
             var cpw = document.createElement("input");
             cpw.className = "sfid-wide sfid-mb12",
             cpw.type = "password",
