@@ -327,7 +327,8 @@
                 i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL))
             } else
                 //a(), document.getElementById("sfid-submit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-submit").disabled = !1
-        },
+			}
+	}
 
 	</script>
 	
