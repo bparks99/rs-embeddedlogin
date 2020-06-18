@@ -30,7 +30,7 @@
   <body>
   <input id="source_code" type="hidden" value="abc123">
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
-	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="startRegistration();">Registration</button></div>
+	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
