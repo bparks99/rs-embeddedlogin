@@ -339,9 +339,9 @@
             r.appendChild(x),
             t.appendChild(r)
         }
+        var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
         D = SFIDWidget.authconfig.AuthProviders.length,
         W = SFIDWidget.authconfig.SamlProviders.length;
-        var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
         if (I && (0 < D || 0 < W)) {
             var v = document.createElement("br");
             (F = document.createElement("p")).className = "sfid-small",
