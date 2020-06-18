@@ -487,13 +487,13 @@
                             n.setAttribute("src", t.result),
                             n.className = "sfid-callback",
                             n.id = "sfid-callback",
-						document.body.appendChild(n) }
+						document.body.appendChild(n) 
                         } else {
                             window.location.replace(t.result)
 						}
                     }
-                },
-                i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL))
+               },
+                i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL));
             } else
                 showError(), document.getElementById("sfid-regsubmit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-regsubmit").disabled = !1
 	}
