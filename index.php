@@ -272,6 +272,9 @@
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   alert(xhttp.responseText);
+			   if (xhttp.responseText != 0) {
+				 authenticateReg();  
+			   };
 			};
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/SelfReg/V1/", true);
@@ -280,7 +283,7 @@
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
-		xhttp.send(JSON.stringify({"firstname" : "Test152", "lastname" : "Tester", "email" : "rstest152@mailinator.com", "source_code" : "abc123", "password" : "password152", "confirmPassword" : "password152", "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php", "includePassword" : true}));
+		xhttp.send(JSON.stringify({"firstname" : "Test153", "lastname" : "Tester", "email" : "rstest153@mailinator.com", "source_code" : "abc123", "password" : "password153", "confirmPassword" : "password153", "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php", "includePassword" : true}));
 	}		
 
 	function cancelReg() {
@@ -290,6 +293,42 @@
                 e.parentNode && e.parentNode.removeChild(e),
                 t && t.focus()
     }
+	
+	function authenticateReg {
+//            document.getElementById("sfid-error").style.display = "none",
+//            document.getElementById("sfid-submit").disabled = !0,
+//            document.getElementById("sfid-submit").className = "sfid-disabled sfid-wide sfid-mb16";
+//            var e = document.getElementById("sfid-username").value,
+			var e = 'rstest151@mailinator.com';
+ //           t = document.getElementById("sfid-password").value;
+			var t = 'password151';
+            if (e && t) {
+                var i = new XMLHttpRequest;
+                i.withCredentials = !0,
+                i.open("POST", SFIDWidget.config.communityURL + "/servlet/servlet.loginwidgetcontroller?type=login", !0),
+                i.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
+                i.onreadystatechange = function () {
+                    var e = this.DONE || 4;
+                    if (this.readyState === e) {
+                        var t = JSON.parse(i.responseText);
+                        if ("invalid" === t.result)
+                            //a(), document.getElementById("sfid-submit").disabled = !1, document.getElementById("sfid-submit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-password").value = "";
+							alert('Invalid REsponse from Login Server');
+                        else if ("true" === SFIDWidget.config.maskRedirects) {
+                            var n = document.createElement("iframe");
+                            n.setAttribute("src", t.result),
+                            n.className = "sfid-callback",
+                            n.id = "sfid-callback",
+                            document.body.appendChild(n)
+                        } else
+                            window.location.replace(t.result)
+                    }
+                },
+                i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL))
+            } else
+                //a(), document.getElementById("sfid-submit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-submit").disabled = !1
+        },
+
 	</script>
 	
   </body>
