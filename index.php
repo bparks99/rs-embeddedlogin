@@ -294,7 +294,7 @@
                 t && t.focus()
     }
 	
-	function authenticateReg {
+	function authenticateReg() {
 //            document.getElementById("sfid-error").style.display = "none",
 //            document.getElementById("sfid-submit").disabled = !0,
 //            document.getElementById("sfid-submit").className = "sfid-disabled sfid-wide sfid-mb16";
@@ -328,7 +328,6 @@
             } else
                 //a(), document.getElementById("sfid-submit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-submit").disabled = !1
 			}
-	}
 
 	</script>
 	
