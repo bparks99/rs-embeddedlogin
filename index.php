@@ -432,7 +432,7 @@
 		payload = payload + ',"confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
 		payload = payload + ',"startUrl" : "' + encodeURIComponent(SFIDWidget.config.authorizeURL) + '"';
 		payload = payload + ',"includePassword" : true}';
-		
+		alert(JSON.stringify(payload));
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
