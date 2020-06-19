@@ -521,3 +521,75 @@ footer a {
 	outline: 0;
 	border: 1px solid #1589ee;
 }
+
+#sfid-email, .sfid-email {
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e0e5ee;
+	background-color: #f7f9fb;
+	font-family: Arial, Helvetica, sans-serif;
+   	box-sizing: border-box;
+	transition: all .1s;
+	height:36px;
+	line-height:20px;
+	-webkit-appearance: none
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	padding: 6px;
+}
+
+
+#sfid-email:focus, .sfid-email:focus  {
+	background-color: #fff;
+	outline: 0;
+	border: 1px solid #1589ee;
+}
+
+#sfid-password, .sfid-password {
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e0e5ee;
+	background-color: #f7f9fb;
+	font-family: Arial, Helvetica, sans-serif;
+   	box-sizing: border-box;
+	transition: all .1s;
+	height:36px;
+	line-height:20px;
+	-webkit-appearance: none
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	padding: 6px;
+}
+
+
+#sfid-password:focus, .sfid-password:focus  {
+	background-color: #fff;
+	outline: 0;
+	border: 1px solid #1589ee;
+}
+
+#sfid-cpassword, .sfid-cpassword {
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e0e5ee;
+	background-color: #f7f9fb;
+	font-family: Arial, Helvetica, sans-serif;
+   	box-sizing: border-box;
+	transition: all .1s;
+	height:36px;
+	line-height:20px;
+	-webkit-appearance: none
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	padding: 6px;
+}
+
+
+#sfid-cpassword:focus, .sfid-cpassword:focus  {
+	background-color: #fff;
+	outline: 0;
+	border: 1px solid #1589ee;
+}
