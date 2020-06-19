@@ -287,7 +287,7 @@
             ln.className = "sfid-wide sfid-mb12",
             ln.type = "text",
             ln.name = "lname",
-            ln.id = "sfid-lname",
+            ln.id = "sfid-lname";
             var lnl = document.createElement("LABEL");
             lnl.htmlFor = ln.id,
             lnl.className = "sfid-button-label",
@@ -296,7 +296,7 @@
             email.className = "sfid-wide sfid-mb12",
             email.type = "text",
             email.name = "email",
-            email.id = "sfid-email",
+            email.id = "sfid-email";
             var emaill = document.createElement("LABEL");
             emaill.htmlFor = email.id,
             emaill.className = "sfid-button-label",
@@ -335,7 +335,7 @@
             r.appendChild(cpw),
             r.appendChild(cpwl),
             r.appendChild(x),
-            t.appendChild(r)
+            t.appendChild(r);
         }
         var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
         D = SFIDWidget.authconfig.AuthProviders.length,
