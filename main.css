@@ -472,6 +472,52 @@ footer a {
 	    -webkit-box-shadow: 0px 2px 6px #090909;
 	    -moz-box-shadow: 0px 2px 6px #090909;
 	    border-radius: 5px;
-	
-	
+}
+
+#sfid-fname, .sfid-fname {
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e0e5ee;
+	background-color: #f7f9fb;
+	font-family: Arial, Helvetica, sans-serif;
+   	box-sizing: border-box;
+	transition: all .1s;
+	height:46px;
+	line-height:20px;
+	-webkit-appearance: none
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	padding: 12px;
+}
+
+
+#sfid-fname:focus, .sfid-fname:focus  {
+	background-color: #fff;
+	outline: 0;
+	border: 1px solid #1589ee;
+}
+
+#sfid-lname, .sfid-lname {
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid #e0e5ee;
+	background-color: #f7f9fb;
+	font-family: Arial, Helvetica, sans-serif;
+   	box-sizing: border-box;
+	transition: all .1s;
+	height:46px;
+	line-height:20px;
+	-webkit-appearance: none
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	padding: 12px;
+}
+
+
+#sfid-lname:focus, .sfid-lname:focus  {
+	background-color: #fff;
+	outline: 0;
+	border: 1px solid #1589ee;
 }
