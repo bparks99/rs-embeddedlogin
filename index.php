@@ -424,14 +424,14 @@
 	function startRegistration() {
 		// Call Salesforce Login
 		var payload = "";
-		payload = 'firstname : ' + document.getElementById("sfid-fname").value;
+		payload = '{firstname : ' + document.getElementById("sfid-fname").value;
 		payload = payload + ' , lastname : ' + document.getElementById("sfid-lname").value;
 		payload = payload + ' , email : ' + document.getElementById("sfid-email").value;
 		payload = payload + ' , source_code : ' + document.getElementById("source_code").value;
 		payload = payload + ' , password : ' + document.getElementById("sfid-password").value;
 		payload = payload + ' , confirmPassword : ' + document.getElementById("sfid-cpassword").value;
 		payload = payload + ' , startUrl : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
-		payload = payload + ',"includePassword" : true}';
+		payload = payload + ' , "includePassword" : true}';
 		alert(JSON.stringify(payload));
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
