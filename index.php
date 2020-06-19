@@ -433,6 +433,7 @@
 		payload = payload + ' , "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
 		payload = payload + ' , "includePassword" : true}';
 		alert(JSON.stringify(payload));
+		alert(JSON.stringify({"firstname" : "Test153", "lastname" : "Tester", "email" : "rstest153@mailinator.com", "source_code" : "abc123", "password" : "password153", "confirmPassword" : "password153", "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php", "includePassword" : true}));
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
