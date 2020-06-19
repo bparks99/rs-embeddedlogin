@@ -1,4 +1,7 @@
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FIX, curated coffee components</title>
@@ -25,8 +28,9 @@
   </head>
   
   <body>
+  <input id="source_code" type="hidden" value="abc123">
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
-	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="startRegistration();">Registration</button></div>
+	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
@@ -242,28 +246,192 @@
 
 	}
 
-	function startRegistration() {
-		var lightbox = document.createElement('div'); 
-	 	lightbox.className = "sfid-lightbox";
-	 	lightbox.id = "sfid-reg-overlay";
-		lightbox.setAttribute("onClick", "cancelReg();");
-		
-		var wrapper = document.createElement('div'); 
-	 	wrapper.id = "identity-wrapper";
-		wrapper.onclick = function(event) {
-		    event = event || window.event // cross-browser event
-    
-		    if (event.stopPropagation) {
-		        // W3C standard variant
-		        event.stopPropagation()
-		    } else {
-		        // IE variant
-		        event.cancelBubble = true
-		    }
-		}
-		
+	function showRegistration() {	
 		var t = document.createElement('div'); 
-	 	t.id = "sfid-content";
+	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor && (t.style.backgroundColor = SFIDWidget.authconfig.LoginPage.BackgroundColor), "modal" === SFIDWidget.config.mode && null != SFIDWidget.authconfig.LoginPage.LogoUrl) {
+            var n = document.createElement("div");
+            n.id = "sfid-logo_wrapper",
+            n.className = "sfid-standard_logo_wrapper sfid-mt12";
+            var i = document.createElement("img");
+            i.src = SFIDWidget.authconfig.LoginPage.LogoUrl,
+            i.className = "sfid-standard_logo",
+            i.alt = "Salesforce",
+            n.appendChild(i);
+            var o = document.createElement("h2");
+            o.id = "dialogTitle";
+            var d = document.createTextNode("Registration");
+            o.appendChild(d),
+            t.setAttribute("role", "dialog"),
+            t.setAttribute("aria-labelledby", o.id),
+            t.tabIndex = "-1",
+            t.addEventListener("keydown", function (e) {
+                27 === e.keyCode && SFIDWidget.cancel()
+            }, !0),
+            t.appendChild(n)
+        }
+        var a = document.createElement("div");
+        if (a.className = "sfid-mb1", a.id = "sfid-error", a.innerHTML = "We can\'t create the user account.", a.style.display = "none", a.setAttribute("role", "alert"), t.appendChild(a)) {
+            var r = document.createElement("form");
+            r.setAttribute("onSubmit", "startRegistration();return false;");
+            var fn = document.createElement("input");
+            fn.className = "sfid-wide sfid-mb12",
+            fn.type = "text",
+            fn.name = "fname",
+            fn.id = "sfid-fname",
+            fn.setAttribute("autofocus", "autofocus");
+            var fnl = document.createElement("LABEL");
+            fnl.htmlFor = fn.id,
+            fnl.className = "sfid-button-label",
+            fnl.innerText = "First Name";
+            var ln = document.createElement("input");
+            ln.className = "sfid-wide sfid-mb12",
+            ln.type = "text",
+            ln.name = "lname",
+            ln.id = "sfid-lname",
+            var lnl = document.createElement("LABEL");
+            lnl.htmlFor = ln.id,
+            lnl.className = "sfid-button-label",
+            lnl.innerText = "Last Name";
+            var email = document.createElement("input");
+            email.className = "sfid-wide sfid-mb12",
+            email.type = "text",
+            email.name = "email",
+            email.id = "sfid-email",
+            var emaill = document.createElement("LABEL");
+            emaill.htmlFor = email.id,
+            emaill.className = "sfid-button-label",
+            emaill.innerText = "Email Address";
+            var pw = document.createElement("input");
+            pw.className = "sfid-wide sfid-mb12",
+            pw.type = "password",
+            pw.name = "password",
+            pw.id = "sfid-password";
+            var pwl = document.createElement("LABEL");
+            pwl.innerText = "Create a Password",
+            pwl.htmlFor = pw.id,
+            pwl.className = "sfid-button-label";
+            var cpw = document.createElement("input");
+            cpw.className = "sfid-wide sfid-mb12",
+            cpw.type = "password",
+            cpw.name = "cpassword",
+            cpw.id = "sfid-cpassword";
+            var cpwl = document.createElement("LABEL");
+            cpwl.innerText = "Confirm Your Password",
+            cpwl.htmlFor = cpw.id,
+            cpwl.className = "sfid-button-label",
+            (x = document.createElement("input")).className = "sfid-button sfid-wide sfid-mb16",
+            x.type = "submit",
+            x.id = "sfid-regsubmit",
+            x.value = "Create an Account",
+            SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
+            r.appendChild(fn),
+            r.appendChild(fnl),
+            r.appendChild(ln),
+            r.appendChild(lnl),
+            r.appendChild(email),
+            r.appendChild(emaill),
+            r.appendChild(pw),
+            r.appendChild(pwl),
+            r.appendChild(cpw),
+            r.appendChild(cpwl),
+            r.appendChild(x),
+            t.appendChild(r)
+        }
+        var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
+        D = SFIDWidget.authconfig.AuthProviders.length,
+        W = SFIDWidget.authconfig.SamlProviders.length;
+        if (I && (0 < D || 0 < W)) {
+            var v = document.createElement("br");
+            (F = document.createElement("p")).className = "sfid-small",
+            F.innerHTML = "or log in using",
+            t.appendChild(v),
+            t.appendChild(F)
+        } else if (!I && (0 < D || 0 < W)) {
+            var F;
+            (F = document.createElement("p")).className = "sfid-small sfid-mb16",
+            F.innerHTML = "Choose an authentication provider.",
+            t.appendChild(F)
+        }
+        if (0 < SFIDWidget.authconfig.AuthProviders.length) {
+            (E = document.createElement("div")).id = "sfid-social";
+            for (var h = document.createElement("ul"), b = 0; b < SFIDWidget.authconfig.AuthProviders.length; b++) {
+                var y = document.createElement("li"),
+                w = SFIDWidget.authconfig.AuthProviders[b].IconUrl,
+                C = SFIDWidget.authconfig.AuthProviders[b].SsoUrl;
+                -1 === C.indexOf("?") ? C += "?startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL) : C += "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL);
+                var k = SFIDWidget.authconfig.AuthProviders[b].Name;
+                if (y.className = "sfid-button-ap", y.id = "sfid-button-ap-" + k, null != w) {
+                    var R = document.createElement("img");
+                    R.className = "sfid-social-buttonimg",
+                    R.src = w,
+                    R.alt = "Login with " + k;
+                    var _ = document.createElement("a");
+                    _.href = C,
+                    _.appendChild(R),
+                    _.title = k,
+                    y.appendChild(_)
+                } else {
+                    (x = document.createElement("button")).setAttribute("onclick", "location.href='" + C + "';");
+                    var U = document.createTextNode(k);
+                    x.appendChild(U),
+                    y.appendChild(x)
+                }
+                h.appendChild(y)
+            }
+            E.appendChild(h),
+            t.appendChild(E)
+        }
+        if (0 < SFIDWidget.authconfig.SamlProviders.length) {
+            var E;
+            (E = document.createElement("div")).id = "sfid-social";
+            h = document.createElement("ul");
+            for (var L in SFIDWidget.authconfig.SamlProviders) {
+                y = document.createElement("li");
+                var x = document.createElement("button"),
+                A = H(SFIDWidget.authconfig.SamlProviders[L].SsoUrl, "RelayState"),
+                N = "&RelayState=" + encodeURIComponent(SFIDWidget.config.authorizeURL),
+                q = SFIDWidget.authconfig.SamlProviders[L].Name;
+                y.className = "sfid-button-saml",
+                y.id = "sfid-button-saml-" + q,
+                x.setAttribute("onclick", "location.href='" + A + N + "';");
+                U = document.createTextNode(q);
+                x.appendChild(U),
+                y.appendChild(x),
+                h.appendChild(y)
+            }
+            E.appendChild(h),
+            t.appendChild(E)
+        }
+ 		
+		
+		if ("modal" === SFIDWidget.config.mode) {
+            var T = document.createElement("div");
+            T.className = "sfid-lightbox",
+            T.id = "sfid-reg-overlay",
+            T.setAttribute("onClick", "cancelReg()");
+            var P = document.createElement("div");
+            P.id = "sfid-wrapper",
+            P.onclick = function (e) {
+                (e = e || window.event).stopPropagation ? e.stopPropagation() : e.cancelBubble = !0
+            },
+            P.appendChild(t),
+            T.appendChild(P),
+            document.body.appendChild(T)
+        } else
+            e.appendChild(t)
+
+	}
+	function startRegistration() {
+		// Call Salesforce Login
+		var payload = "";
+		payload = '"firstname" : "' + document.getElementById("sfid-fname").value + '"';
+		payload = payload + ',"lastname" : "' + document.getElementById("sfid-lname").value + '"';
+		payload = payload + ',"email" : "' + document.getElementById("sfid-email").value + '"';
+		payload = payload + ',"source_code" : "' + document.getElementById("source_code").value + '"';
+		payload = payload + ',"password" : "' + document.getElementById("sfid-password").value + '"';
+		payload = payload + ',"confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
+		payload = payload + ',"startUrl" : "' + encodeURIComponent(SFIDWidget.config.authorizeURL) + '"';
+		payload = payload + ',"includePassword" : true}';
 		
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -280,7 +448,8 @@
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
-		xhttp.send(JSON.stringify({"firstname" : "Test154", "lastname" : "Tester", "email" : "rstest154@mailinator.com", "source_code" : "abc123", "password" : "password154", "confirmPassword" : "password154", "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php", "includePassword" : true}));
+		//xhttp.send(JSON.stringify({"firstname" : "Test153", "lastname" : "Tester", "email" : "rstest153@mailinator.com", "source_code" : "abc123", "password" : "password153", "confirmPassword" : "password153", "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php", "includePassword" : true}));
+		xhttp.send(JSON.stringify(payload));
 	}		
 
 	function cancelReg() {
@@ -292,13 +461,13 @@
     }
 	
 	function authenticateReg() {
-//            document.getElementById("sfid-error").style.display = "none",
-//            document.getElementById("sfid-submit").disabled = !0,
-//            document.getElementById("sfid-submit").className = "sfid-disabled sfid-wide sfid-mb16";
-//            var e = document.getElementById("sfid-username").value,
-			var e = 'rstest151@mailinator.com';
- //           t = document.getElementById("sfid-password").value;
-			var t = 'password151';
+            document.getElementById("sfid-error").style.display = "none",
+            document.getElementById("sfid-regsubmit").disabled = !0,
+            document.getElementById("sfid-regsubmit").className = "sfid-disabled sfid-wide sfid-mb16";
+            var e = document.getElementById("sfid-email").value,
+			//var e = 'rstest151@mailinator.com';
+            t = document.getElementById("sfid-password").value;
+			//var t = 'password151';
             if (e && t) {
                 var i = new XMLHttpRequest;
                 i.withCredentials = !0,
@@ -308,25 +477,29 @@
                     var e = this.DONE || 4;
                     if (this.readyState === e) {
                         var t = JSON.parse(i.responseText);
-                        if ("invalid" === t.result)
-                            //a(), document.getElementById("sfid-submit").disabled = !1, document.getElementById("sfid-submit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-password").value = "";
+                        if ("invalid" === t.result) {
+                            showError(), document.getElementById("sfid-regsubmit").disabled = !1, document.getElementById("sfid-regsubmit").className = "sfid-button sfid-wide sfid-mb16";
 							alert('Invalid REsponse from Login Server');
-                        else if ("true" === SFIDWidget.config.maskRedirects) {
+                        } else if ("true" === SFIDWidget.config.maskRedirects) {
                             var n = document.createElement("iframe");
                             n.setAttribute("src", t.result),
                             n.className = "sfid-callback",
                             n.id = "sfid-callback",
-                            document.body.appendChild(n)
-                        } else
+						document.body.appendChild(n) 
+                        } else {
                             window.location.replace(t.result)
+						}
                     }
-                },
-                i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL))
+               },
+                i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL));
             } else
-                //a(), document.getElementById("sfid-submit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-submit").disabled = !1
-				alert('Do Nothing');
-			}
+                showError(), document.getElementById("sfid-regsubmit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-regsubmit").disabled = !1
+	}
 
+	function showError() {
+        document.getElementById("sfid-error").style.display = "inline"
+    }
+   
 	</script>
 	
   </body>
