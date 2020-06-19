@@ -305,7 +305,7 @@
             pw.className = "sfid-wide sfid-mb12",
             pw.type = "password",
             pw.name = "password",
-            pw.id = "sfid-password";
+            pw.id = "sfid-pwd";
             var pwl = document.createElement("LABEL");
             pwl.innerText = "Create a Password",
             pwl.htmlFor = pw.id,
@@ -428,7 +428,7 @@
 		payload = payload + ' , "lastname" : "' + document.getElementById("sfid-lname").value + '"';
 		payload = payload + ' , "email" : "' + document.getElementById("sfid-email").value + '"';
 		payload = payload + ' , "source_code" : "' + document.getElementById("source_code").value + '"';
-		payload = payload + ' , "password" : "' + document.getElementById("sfid-password").value + '"';
+		payload = payload + ' , "password" : "' + document.getElementById("sfid-pwd").value + '"';
 		payload = payload + ' , "confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
 		payload = payload + ' , "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
 		payload = payload + ' , "includePassword" : true}';
@@ -466,7 +466,7 @@
             document.getElementById("sfid-regsubmit").className = "sfid-disabled sfid-wide sfid-mb16";
             var e = document.getElementById("sfid-email").value,
 			//var e = 'rstest151@mailinator.com';
-            t = document.getElementById("sfid-password").value;
+            t = document.getElementById("sfid-pwd").value;
 			//var t = 'password151';
             if (e && t) {
                 var i = new XMLHttpRequest;

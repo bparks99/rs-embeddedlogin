@@ -546,7 +546,7 @@ footer a {
 	border: 1px solid #1589ee;
 }
 
-#sfid-password, .sfid-password {
+#sfid-pwd, .sfid-pwd {
 	border-radius: 5px;
 	font-size: 14px;
 	border: 1px solid #e0e5ee;
@@ -564,7 +564,7 @@ footer a {
 }
 
 
-#sfid-password:focus, .sfid-password:focus  {
+#sfid-pwd:focus, .sfid-pwd:focus  {
 	background-color: #fff;
 	outline: 0;
 	border: 1px solid #1589ee;
