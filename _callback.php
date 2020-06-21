@@ -8,7 +8,4 @@
 	<script src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/servlet/servlet.loginwidgetcontroller?type=javascript_widget" async defer></script>
 </head> 
 <body></body>
-<script>
-alert("Hello");
-</script>    
 </html>
