@@ -435,7 +435,8 @@
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
-			   if (xhttp.responseText.length != 0) {
+			   var regResult = JSON.parse(i.responseText);			   
+			   if ("invalid" !== regResult.result) {
 				 authenticateReg();  
 			   };
 			};
@@ -483,7 +484,6 @@
                         var t = JSON.parse(i.responseText);
                         if ("invalid" === t.result) {
                             showError(), document.getElementById("sfid-regsubmit").disabled = !1, document.getElementById("sfid-regsubmit").className = "sfid-button sfid-wide sfid-mb16";
-							alert('Invalid Response from Login Server');
                         } else if ("true" === SFIDWidget.config.maskRedirects) {
                             var n = document.createElement("iframe");
                             n.setAttribute("src", t.result),
