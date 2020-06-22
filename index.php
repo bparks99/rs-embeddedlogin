@@ -435,9 +435,15 @@
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
-			   if (xhttp.responseText != 0) {
+			   if (xhttp.responseText.length != 0) {
 				 authenticateReg();  
 			   };
+			};
+			if (this.readyState == 4 && this.status == 400) {
+			   alert(xhttp.responseText);
+			};
+			if (this.readyState == 4 && this.status == 200) {
+			   alert(xhttp.responseText);
 			};
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/SelfReg/V1/", true);
@@ -477,7 +483,7 @@
                         var t = JSON.parse(i.responseText);
                         if ("invalid" === t.result) {
                             showError(), document.getElementById("sfid-regsubmit").disabled = !1, document.getElementById("sfid-regsubmit").className = "sfid-button sfid-wide sfid-mb16";
-							alert('Invalid REsponse from Login Server');
+							alert('Invalid Response from Login Server');
                         } else if ("true" === SFIDWidget.config.maskRedirects) {
                             var n = document.createElement("iframe");
                             n.setAttribute("src", t.result),
