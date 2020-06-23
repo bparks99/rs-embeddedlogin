@@ -434,7 +434,7 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-			   //alert(xhttp.responseText);
+			   alert(xhttp.responseText);
 			   var regResult = JSON.parse(i.responseText);			   
 			   if ("invalid" !== regResult.result) {
 				 authenticateReg();  
