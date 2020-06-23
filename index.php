@@ -447,9 +447,8 @@
 			if (this.readyState == 4 && this.status == 400) {
 			   alert(xhttp.responseText);
 			   // replace alert with Show error
-			   //yourstringName.substirng(1,yourstringName.length()-1)
 			   var regResult = JSON.parse(xhttp.responseText);
-			   document.getElementById("sfid-error").innerHTML = regResult[0].message;
+			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
 			if (this.readyState == 4 && this.status == 500) {
