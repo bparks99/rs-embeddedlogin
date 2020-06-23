@@ -435,8 +435,9 @@
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
-			   var regResult = JSON.parse(i.responseText);			   
-			   if (regResult.userid != null && regResult.userid.length > 0) {
+			   var regResult = JSON.parse(xhttp.responseText);
+alert(regResult);			   
+			   if (regResult.userid) {
 				 authenticateReg();  
 			   };
 			};
