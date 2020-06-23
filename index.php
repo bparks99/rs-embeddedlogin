@@ -445,13 +445,14 @@
 			};
 			if (this.readyState == 4 && this.status == 400) {
 			   alert(xhttp.responseText);
-			   // replace alert with Show error 
-			   document.getElementById("sfid-error").innerHTML = xhttp.responseText.message;
+			   // replace alert with Show error
+			   var regResult = JSON.parse(xhttp.responseText);			   
+			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
 			if (this.readyState == 4 && this.status == 500) {
 			   alert(xhttp.responseText);
-			   document.getElementById("sfid-error").innerHTML = xhttp.responseText.message;
+			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to register.';
 			   showError();
 			};
 		};
