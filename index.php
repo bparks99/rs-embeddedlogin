@@ -443,9 +443,13 @@
 			if (this.readyState == 4 && this.status == 400) {
 			   alert(xhttp.responseText);
 			   // replace alert with Show error 
+			   document.getElementById("sfid-error").innerHTML = xhttp.responseText;
+			   showError();
 			};
 			if (this.readyState == 4 && this.status == 500) {
 			   alert(xhttp.responseText);
+			   document.getElementById("sfid-error").innerHTML = xhttp.responseText;
+			   showError();
 			};
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/SelfReg/V1/", true);
