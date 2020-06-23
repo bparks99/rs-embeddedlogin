@@ -435,8 +435,7 @@
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
-			   var regResult = JSON.parse(xhttp.responseText);
-alert(regResult);			   
+			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.userid) {
 				 authenticateReg();  
 			   };
@@ -455,7 +454,6 @@ alert(regResult);
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
-		//xhttp.send(JSON.stringify({"firstname" : "Test153", "lastname" : "Tester", "email" : "rstest153@mailinator.com", "source_code" : "abc123", "password" : "password153", "confirmPassword" : "password153", "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php", "includePassword" : true}));
 		xhttp.send(payload);
 	}		
 
@@ -472,9 +470,7 @@ alert(regResult);
             document.getElementById("sfid-regsubmit").disabled = !0,
             document.getElementById("sfid-regsubmit").className = "sfid-disabled sfid-wide sfid-mb16";
             var e = document.getElementById("sfid-email").value,
-			//var e = 'rstest151@mailinator.com';
             t = document.getElementById("sfid-pwd").value;
-			//var t = 'password151';
             if (e && t) {
                 var i = new XMLHttpRequest;
                 i.withCredentials = !0,
