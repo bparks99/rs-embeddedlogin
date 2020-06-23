@@ -432,7 +432,7 @@
 		payload = payload + ' , "includePassword" : true}';
 		
 		var xhttp = new XMLHttpRequest();
-		xhttp.responseType = 'json';
+		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
