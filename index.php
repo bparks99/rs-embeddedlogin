@@ -434,7 +434,7 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
-			if (this.readyS.tate == 4 && this.status == 200) {
+			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.userid) {
