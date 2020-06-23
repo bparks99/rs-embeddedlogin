@@ -432,11 +432,13 @@
 		payload = payload + ' , "includePassword" : true}';
 		
 		var xhttp = new XMLHttpRequest();
+		xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
+			if (this.readyS.tate == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.userid) {
+				   alert(regResult.userid);
 				 authenticateReg();  
 			   } else {
 				document.getElementById("sfid-error").innerHTML = 'Error Registering your account';
