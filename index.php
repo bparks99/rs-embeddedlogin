@@ -445,7 +445,7 @@
 			   };
 			};
 			if (this.readyState == 4 && this.status == 400) {
-			   alert(xhttp.responseText);
+			   //alert(xhttp.responseText);
 			   // replace alert with Show error
 			   var regResult = JSON.parse(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
