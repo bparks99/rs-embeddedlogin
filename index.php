@@ -448,7 +448,7 @@
 			   alert(xhttp.responseText);
 			   // replace alert with Show error
 			   //yourstringName.substirng(1,yourstringName.length()-1)
-			   var regResult = JSON.parse(xhttp.responseText.substirng(1,xhttp.responseText.length()-1));			   
+			   var regResult = JSON.parse(xhttp.responseText.substring(1,xhttp.responseText.length()-1));			   
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
