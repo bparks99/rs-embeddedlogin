@@ -438,7 +438,6 @@
 			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.userid) {
-				   alert(regResult.userid);
 				 authenticateReg();  
 			   } else {
 				document.getElementById("sfid-error").innerHTML = 'Error Registering your account';
@@ -448,7 +447,8 @@
 			if (this.readyState == 4 && this.status == 400) {
 			   alert(xhttp.responseText);
 			   // replace alert with Show error
-			   var regResult = JSON.parse(xhttp.responseText);			   
+			   //yourstringName.substirng(1,yourstringName.length()-1)
+			   var regResult = JSON.parse(xhttp.responseText.substirng(1,xhttp.responseText.length()-1));			   
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
