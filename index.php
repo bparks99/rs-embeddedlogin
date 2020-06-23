@@ -434,14 +434,15 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-			   alert(xhttp.responseText);
+			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(i.responseText);			   
-			   if ("invalid" !== regResult.result) {
+			   if (regResult.userid != null && regResult.userid.length > 0) {
 				 authenticateReg();  
 			   };
 			};
 			if (this.readyState == 4 && this.status == 400) {
 			   alert(xhttp.responseText);
+			   // replace alert with Show error 
 			};
 			if (this.readyState == 4 && this.status == 500) {
 			   alert(xhttp.responseText);
