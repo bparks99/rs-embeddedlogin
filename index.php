@@ -31,6 +31,7 @@
   <input id="source_code" type="hidden" value="abc123">
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
 	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
+	<div id="pwreset-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
@@ -445,14 +446,13 @@
 			   };
 			};
 			if (this.readyState == 4 && this.status == 400) {
-			   //alert(xhttp.responseText);
-			   // replace alert with Show error
+			   console.log(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
 			if (this.readyState == 4 && this.status == 500) {
-			   alert(xhttp.responseText);
+			   console.log(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to register.';
 			   showError();
 			};
@@ -510,7 +510,114 @@
 	function showError() {
         document.getElementById("sfid-error").style.display = "inline"
     }
-   
+	
+	function showPasswordReset() {
+		var t = document.createElement('div'); 
+	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor && (t.style.backgroundColor = SFIDWidget.authconfig.LoginPage.BackgroundColor), "modal" === SFIDWidget.config.mode && null != SFIDWidget.authconfig.LoginPage.LogoUrl) {
+            var n = document.createElement("div");
+            n.id = "sfid-logo_wrapper",
+            n.className = "sfid-standard_logo_wrapper sfid-mt12";
+            var i = document.createElement("img");
+            i.src = SFIDWidget.authconfig.LoginPage.LogoUrl,
+            i.className = "sfid-standard_logo",
+            i.alt = "Salesforce",
+            n.appendChild(i);
+            var o = document.createElement("h2");
+            o.id = "dialogTitle";
+            var d = document.createTextNode("Reset Password");
+            o.appendChild(d),
+            t.setAttribute("role", "dialog"),
+            t.setAttribute("aria-labelledby", o.id),
+            t.tabIndex = "-1",
+            t.addEventListener("keydown", function (e) {
+                27 === e.keyCode && SFIDWidget.cancel()
+            }, !0),
+            t.appendChild(n)
+        }
+        var a = document.createElement("div");
+        if (a.className = "sfid-mb1", a.id = "sfid-error", a.innerHTML = "We can\'t reset your password.", a.style.display = "none", a.setAttribute("role", "alert"), t.appendChild(a)) {
+            var r = document.createElement("form");
+            r.setAttribute("onSubmit", "startPasswordReset();return false;");
+            var email = document.createElement("input");
+            email.className = "sfid-wide sfid-mb12",
+            email.type = "text",
+            email.name = "email",
+            email.id = "sfid-email";
+            var emaill = document.createElement("LABEL");
+            emaill.htmlFor = email.id,
+            emaill.className = "sfid-button-label",
+            emaill.innerText = "Email Address";
+            (x = document.createElement("input")).className = "sfid-button sfid-wide sfid-mb16",
+            x.type = "submit",
+            x.id = "sfid-pwresetsubmit",
+            x.value = "Reset Password",
+            SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
+            r.appendChild(emaill),
+            r.appendChild(email),
+            r.appendChild(x),
+            t.appendChild(r);
+        }
+		if ("modal" === SFIDWidget.config.mode) {
+            var T = document.createElement("div");
+            T.className = "sfid-lightbox",
+            T.id = "sfid-pwreset-overlay",
+            T.setAttribute("onClick", "cancelPasswordReset()");
+            var P = document.createElement("div");
+            P.id = "sfid-wrapper",
+            P.onclick = function (e) {
+                (e = e || window.event).stopPropagation ? e.stopPropagation() : e.cancelBubble = !0
+            },
+            P.appendChild(t),
+            T.appendChild(P),
+            document.body.appendChild(T)
+        } else
+            e.appendChild(t)		
+	}
+	function startPasswordReset() {
+		// Call Salesforce Login
+		var payload = "";
+		payload = '{"email" : "' + document.getElementById("sfid-email").value + '"}';
+		
+		var xhttp = new XMLHttpRequest();
+		//xhttp.responseType = 'json';
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			   //alert(xhttp.responseText);
+			   var regResult = JSON.parse(xhttp.responseText);			   
+			   if (regResult.userid) {
+				 authenticateReg();  
+			   } else {
+				document.getElementById("sfid-error").innerHTML = 'Error Registering your account';
+				showError();
+			   };
+			};
+			if (this.readyState == 4 && this.status == 400) {
+			   console.log(xhttp.responseText);
+			   var regResult = JSON.parse(xhttp.responseText);
+			   document.getElementById("sfid-error").innerHTML = regResult.message;
+			   showError();
+			};
+			if (this.readyState == 4 && this.status == 500) {
+			   console.log(xhttp.responseText);
+			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to register.';
+			   showError();
+			};
+		};
+		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/forgotPassword?locale=us", true);
+		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+		xhttp.setRequestHeader("crossOrigin", "true");
+		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
+		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
+		xhttp.send(payload);		
+	}
+	function cancelPasswordReset() {
+                var e = document.getElementById("sfid-pwreset-overlay");
+                e.style.display = "none";
+                var t = document.getElementById("sfid-pwreset-button");
+                e.parentNode && e.parentNode.removeChild(e),
+                t && t.focus()
+    }
 	</script>
 	
   </body>
