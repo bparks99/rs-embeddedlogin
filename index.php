@@ -31,7 +31,7 @@
   <input id="source_code" type="hidden" value="abc123">
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
 	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
-	<div id="pwreset-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
+	<div id="pwreset-link" style="position: absolute; top: 105px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
