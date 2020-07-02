@@ -603,7 +603,7 @@
 			   showError();
 			};
 		};
-		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/rest/user/password", true);
+		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/user/password", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
