@@ -585,10 +585,14 @@
 			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.success) {
-				 alert("Please look for a password reset email to continue resetting your password.");
-				 cancelPasswordReset();				 
+				 if (regResult.success = 'Yes') {
+					alert("Please look for a password reset email to continue resetting your password.");
+					cancelPasswordReset();
+				 } else {
+					alert("There was a problem reseting your password"); 
+				 }				 				 
 			   } else {
-				document.getElementById("sfid-error").innerHTML = 'Error Registering your account';
+				document.getElementById("sfid-error").innerHTML = 'Error Resseting Password.';
 				showError();
 			   };
 			};
