@@ -576,7 +576,7 @@
 	function startPasswordReset() {
 		// Call Salesforce Login
 		var payload = "";
-		payload = '{"username" : "' + document.getElementById("sfid-email").value + '","reset":true}';
+		payload = '{"username" : "' + document.getElementById("sfid-email").value + '"}';
 		
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
@@ -584,8 +584,9 @@
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
-			   if (regResult.userid) {
-				 authenticateReg();  
+			   if (regResult.success) {
+				 alert("Please look for a password reset email to continue resetting your password.");
+				 cancelPasswordReset();				 
 			   } else {
 				document.getElementById("sfid-error").innerHTML = 'Error Registering your account';
 				showError();
@@ -599,11 +600,12 @@
 			};
 			if (this.readyState == 4 && this.status == 500) {
 			   console.log(xhttp.responseText);
-			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to register.';
+			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to Reset your Password.';
 			   showError();
 			};
 		};
-		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/user/password", true);
+//		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/login/CheckPasswordResetEmail", true);
+		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/ForgotPassword/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
