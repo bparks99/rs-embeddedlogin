@@ -32,6 +32,7 @@
   	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
 	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
 	<div id="pwreset-link" style="position: absolute; top: 105px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
+	<div id="newsign-in-link" style="position: absolute; top: 145px;right: 20px;"><button id="sfid-newlogin-button" class="sfid-button" onclick="showNewLogin();">New Login</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
@@ -624,6 +625,184 @@
                 e.parentNode && e.parentNode.removeChild(e),
                 t && t.focus()
     }
+	function showNewLogin() {
+		var t = document.createElement('div'); 
+	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor && (t.style.backgroundColor = SFIDWidget.authconfig.LoginPage.BackgroundColor), "modal" === SFIDWidget.config.mode && null != SFIDWidget.authconfig.LoginPage.LogoUrl) {
+            var n = document.createElement("div");
+            n.id = "sfid-logo_wrapper",
+            n.className = "sfid-standard_logo_wrapper sfid-mt12";
+            var i = document.createElement("img");
+            i.src = SFIDWidget.authconfig.LoginPage.LogoUrl,
+            i.className = "sfid-standard_logo",
+            i.alt = "Salesforce",
+            n.appendChild(i);
+            var o = document.createElement("h2");
+            o.id = "dialogTitle";
+            var d = document.createTextNode("Registration");
+            o.appendChild(d),
+            t.setAttribute("role", "dialog"),
+            t.setAttribute("aria-labelledby", o.id),
+            t.tabIndex = "-1",
+            t.addEventListener("keydown", function (e) {
+                27 === e.keyCode && SFIDWidget.cancel()
+            }, !0),
+            t.appendChild(n)
+        }
+        var a = document.createElement("div");
+        if (a.className = "sfid-mb1", a.id = "sfid-error", a.innerHTML = "We can\'t login with the user account.", a.style.display = "none", a.setAttribute("role", "alert"), t.appendChild(a)) {
+            var r = document.createElement("form");
+            r.setAttribute("onSubmit", "startNewLogin();return false;");
+            var email = document.createElement("input");
+            email.className = "sfid-wide sfid-mb12",
+            email.type = "text",
+            email.name = "email",
+            email.id = "sfid-email";
+            var emaill = document.createElement("LABEL");
+            emaill.htmlFor = email.id,
+            emaill.className = "sfid-button-label",
+            emaill.innerText = "Email Address";
+            var pw = document.createElement("input");
+            pw.className = "sfid-wide sfid-mb12",
+            pw.type = "password",
+            pw.name = "password",
+            pw.id = "sfid-pwd";
+            var pwl = document.createElement("LABEL");
+            pwl.innerText = "Password",
+            pwl.htmlFor = pw.id,
+            pwl.className = "sfid-button-label";
+            (x = document.createElement("input")).className = "sfid-button sfid-wide sfid-mb16",
+            x.type = "submit",
+            x.id = "sfid-newloginsubmit",
+            x.value = "Sign In",
+            SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
+            r.appendChild(emaill),
+            r.appendChild(email),
+            r.appendChild(pwl),
+            r.appendChild(pw),
+            r.appendChild(x),
+            t.appendChild(r);
+        var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
+        D = SFIDWidget.authconfig.AuthProviders.length,
+        W = SFIDWidget.authconfig.SamlProviders.length;
+        if (I && (0 < D || 0 < W)) {
+            var v = document.createElement("br");
+            (F = document.createElement("p")).className = "sfid-small",
+            F.innerHTML = "or log in using",
+            t.appendChild(v),
+            t.appendChild(F)
+        } else if (!I && (0 < D || 0 < W)) {
+            var F;
+            (F = document.createElement("p")).className = "sfid-small sfid-mb16",
+            F.innerHTML = "Choose an authentication provider.",
+            t.appendChild(F)
+        }
+        if (0 < SFIDWidget.authconfig.AuthProviders.length) {
+            (E = document.createElement("div")).id = "sfid-social";
+            for (var h = document.createElement("ul"), b = 0; b < SFIDWidget.authconfig.AuthProviders.length; b++) {
+                var y = document.createElement("li"),
+                w = SFIDWidget.authconfig.AuthProviders[b].IconUrl,
+                C = SFIDWidget.authconfig.AuthProviders[b].SsoUrl;
+                -1 === C.indexOf("?") ? C += "?startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL) : C += "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL);
+                var k = SFIDWidget.authconfig.AuthProviders[b].Name;
+                if (y.className = "sfid-button-ap", y.id = "sfid-button-ap-" + k, null != w) {
+                    var R = document.createElement("img");
+                    R.className = "sfid-social-buttonimg",
+                    R.src = w,
+                    R.alt = "Login with " + k;
+                    var _ = document.createElement("a");
+                    _.href = C,
+                    _.appendChild(R),
+                    _.title = k,
+                    y.appendChild(_)
+                } else {
+                    (x = document.createElement("button")).setAttribute("onclick", "location.href='" + C + "';");
+                    var U = document.createTextNode(k);
+                    x.appendChild(U),
+                    y.appendChild(x)
+                }
+                h.appendChild(y)
+            }
+            E.appendChild(h),
+            t.appendChild(E)
+        }
+        if (0 < SFIDWidget.authconfig.SamlProviders.length) {
+            var E;
+            (E = document.createElement("div")).id = "sfid-social";
+            h = document.createElement("ul");
+            for (var L in SFIDWidget.authconfig.SamlProviders) {
+                y = document.createElement("li");
+                var x = document.createElement("button"),
+                A = H(SFIDWidget.authconfig.SamlProviders[L].SsoUrl, "RelayState"),
+                N = "&RelayState=" + encodeURIComponent(SFIDWidget.config.authorizeURL),
+                q = SFIDWidget.authconfig.SamlProviders[L].Name;
+                y.className = "sfid-button-saml",
+                y.id = "sfid-button-saml-" + q,
+                x.setAttribute("onclick", "location.href='" + A + N + "';");
+                U = document.createTextNode(q);
+                x.appendChild(U),
+                y.appendChild(x),
+                h.appendChild(y)
+            }
+            E.appendChild(h),
+            t.appendChild(E)
+        }
+		if ("modal" === SFIDWidget.config.mode) {
+            var T = document.createElement("div");
+            T.className = "sfid-lightbox",
+            T.id = "sfid-newlogin-overlay",
+            T.setAttribute("onClick", "cancelNewLogin()");
+            var P = document.createElement("div");
+            P.id = "sfid-wrapper",
+            P.onclick = function (e) {
+                (e = e || window.event).stopPropagation ? e.stopPropagation() : e.cancelBubble = !0
+            },
+            P.appendChild(t),
+            T.appendChild(P),
+            document.body.appendChild(T)
+        } else
+            e.appendChild(t)
+		}
+	}
+	function startNewLogin() {
+            document.getElementById("sfid-error").style.display = "none",
+            document.getElementById("sfid-newloginsubmit").disabled = !0,
+            document.getElementById("sfid-newloginsubmit").className = "sfid-disabled sfid-wide sfid-mb16";
+            var e = document.getElementById("sfid-email").value,
+            t = document.getElementById("sfid-pwd").value;
+            if (e && t) {
+                var i = new XMLHttpRequest;
+                i.withCredentials = !0,
+                i.open("POST", SFIDWidget.config.communityURL + "/servlet/servlet.loginwidgetcontroller?type=login", !0),
+                i.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
+                i.onreadystatechange = function () {
+                    var e = this.DONE || 4;
+                    if (this.readyState === e) {
+                        var t = JSON.parse(i.responseText);
+                        if ("invalid" === t.result) {
+                            showError(), document.getElementById("sfid-newloginsubmit").disabled = !1, document.getElementById("sfid-newloginsubmit").className = "sfid-button sfid-wide sfid-mb16";
+                        } else if ("true" === SFIDWidget.config.maskRedirects) {
+                            var n = document.createElement("iframe");
+                            n.setAttribute("src", t.result),
+                            n.className = "sfid-callback",
+                            n.id = "sfid-callback",
+						document.body.appendChild(n) 
+                        } else {
+                            window.location.replace(t.result)
+						}
+                    }
+               },
+                i.send("username=" + encodeURIComponent(e) + "&password=" + encodeURIComponent(t) + "&startURL=" + encodeURIComponent(SFIDWidget.config.authorizeURL));
+            } else
+                showError(), document.getElementById("sfid-newloginsubmit").className = "sfid-button sfid-wide sfid-mb16", document.getElementById("sfid-newloginsubmit").disabled = !1		
+	}
+	function cancelNewLogin() {
+                var e = document.getElementById("sfid-newlogin-overlay");
+                e.style.display = "none";
+                var t = document.getElementById("sfid-newlogin-button");
+                e.parentNode && e.parentNode.removeChild(e),
+                t && t.focus()
+    }
+
 	</script>
 	
   </body>
