@@ -15,7 +15,6 @@
     <meta name="salesforce-redirect-uri" content="https://<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>/_callback.php">
     <meta name="salesforce-mode" content="<?php echo getenv('SALESFORCE_MODE');?>">
     <meta name="salesforce-namespace" content="<?php echo getenv('SALESFORCE_NAMESPACE');?>">
-    <meta name="salesforce-target" content="#sign-in-link">
     <meta name="salesforce-save-access-token" content="true">
     <meta name="salesforce-forgot-password-enabled" content="<?php echo getenv('SALESFORCE_FORGOT_PASSWORD_ENABLED');?>">
     <meta name="salesforce-self-register-enabled" content="<?php echo getenv('SALESFORCE_SELF_REGISTER_ENABLED');?>">
@@ -29,7 +28,6 @@
   
   <body>
   <input id="source_code" type="hidden" value="abc123">
-  	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
 	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
 	<div id="pwreset-link" style="position: absolute; top: 105px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
 	<div id="newsign-in-link" style="position: absolute; top: 145px;right: 20px;"><button id="sfid-newlogin-button" class="sfid-button" onclick="showNewLogin();">New Login</button></div>
