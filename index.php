@@ -33,7 +33,7 @@
 	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
 	<div id="pwreset-link" style="position: absolute; top: 105px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
 	<div id="newsign-in-link" style="position: absolute; top: 145px;right: 20px;"><button id="sfid-newlogin-button" class="sfid-button" onclick="showNewLogin();">New Login</button></div>
-	<div id="change-link" style="position: absolute; top: 185px;right: 20px;"><button id="sfid-changePW-button" class="sfid-button" onclick="showchangePassword();">Change Password</button></div>
+	<div id="change-link" style="position: absolute; top: 185px;right: 20px;"><button id="sfid-changePW-button" class="sfid-button" onclick="showChangePassword();">Change Password</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
