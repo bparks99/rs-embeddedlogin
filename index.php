@@ -878,7 +878,7 @@
 	function startChangePassword() {
 		// Call Salesforce Change Password
 		var payload = "";
-		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "newPassword" : "' + document.getElementById("sfid-email").value + '"}';
+		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "newPassword" : "' + document.getElementById("sfid-password").value + '"}';
 		
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
@@ -889,7 +889,7 @@
 			   if (regResult.success) {
 				 if (regResult.success = 'Yes') {
 					alert("Password Changed.");
-					cancelPasswordReset();
+					cancelChangePassword();
 				 } else {
 					alert("There was a problem changing your password"); 
 				 }				 				 
