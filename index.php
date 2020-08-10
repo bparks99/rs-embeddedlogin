@@ -910,6 +910,7 @@
 			   showError();
 			};
 		};
+		alert(SFIDWidget.openid_response.access_token);
 //		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/login/CheckPasswordResetEmail", true);
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
@@ -917,6 +918,8 @@
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
+		xhttp.setRequestHeader('Authorization', 'Bearer ' + SFIDWidget.openid_response.access_token);
+		
 		xhttp.send(payload);		
 	}
 	function cancelChangePassword() {
