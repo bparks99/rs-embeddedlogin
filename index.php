@@ -33,6 +33,7 @@
 	<div id="reg-link" style="position: absolute; top: 65px;right: 20px;"><button id="sfid-reg-button" class="sfid-button" onclick="showRegistration();">Registration</button></div>
 	<div id="pwreset-link" style="position: absolute; top: 105px;right: 20px;"><button id="sfid-pwreset-button" class="sfid-button" onclick="showPasswordReset();">Reset Password</button></div>
 	<div id="newsign-in-link" style="position: absolute; top: 145px;right: 20px;"><button id="sfid-newlogin-button" class="sfid-button" onclick="showNewLogin();">New Login</button></div>
+	<div id="change-link" style="position: absolute; top: 105px;right: 20px;"><button id="sfid-changePW-button" class="sfid-button" onclick="showchangePassword();">Change Password</button></div>
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
@@ -47,8 +48,6 @@
     </header>
     <section class="textured-section">
       <h1>Brian's Coffee Components</h1>
-      
-
       <ul class="products">
         <li>
           <img class="product-image" src="images/products/071715_Heroku_3270-.jpg" alt="">
@@ -802,7 +801,129 @@
                 e.parentNode && e.parentNode.removeChild(e),
                 t && t.focus()
     }
+	function showChangePassword() {
+		var t = document.createElement('div'); 
+	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor && (t.style.backgroundColor = SFIDWidget.authconfig.LoginPage.BackgroundColor), "modal" === SFIDWidget.config.mode && null != SFIDWidget.authconfig.LoginPage.LogoUrl) {
+            var n = document.createElement("div");
+            n.id = "sfid-logo_wrapper",
+            n.className = "sfid-standard_logo_wrapper sfid-mt12";
+            var i = document.createElement("img");
+            i.src = SFIDWidget.authconfig.LoginPage.LogoUrl,
+            i.className = "sfid-standard_logo",
+            i.alt = "Salesforce",
+            n.appendChild(i);
+            var o = document.createElement("h2");
+            o.id = "dialogTitle";
+            var d = document.createTextNode("Change Password");
+            o.appendChild(d),
+            t.setAttribute("role", "dialog"),
+            t.setAttribute("aria-labelledby", o.id),
+            t.tabIndex = "-1",
+            t.addEventListener("keydown", function (e) {
+                27 === e.keyCode && SFIDWidget.cancel()
+            }, !0),
+            t.appendChild(n)
+        }
+        var a = document.createElement("div");
+        if (a.className = "sfid-mb1", a.id = "sfid-error", a.innerHTML = "We can\'t Change your password.", a.style.display = "none", a.setAttribute("role", "alert"), t.appendChild(a)) {
+            var r = document.createElement("form");
+            r.setAttribute("onSubmit", "startChangePassword();return false;");
+            var email = document.createElement("input");
+            email.className = "sfid-wide sfid-mb12",
+            email.type = "text",
+            email.name = "email",
+            email.id = "sfid-email";
+            var emaill = document.createElement("LABEL");
+            emaill.htmlFor = email.id,
+            emaill.className = "sfid-button-label",
+            emaill.innerText = "Email Address";
+			var password = document.createElement("input");
+            email.className = "sfid-wide sfid-mb12",
+            email.type = "password",
+            email.name = "password",
+            email.id = "sfid-password";
+            var passwordl = document.createElement("LABEL");
+            emaill.htmlFor = password.id,
+            emaill.className = "sfid-button-label",
+            emaill.innerText = "Password";
 
+            (x = document.createElement("input")).className = "sfid-button sfid-wide sfid-mb16",
+            x.type = "submit",
+            x.id = "sfid-pwchangesubmit",
+            x.value = "Change Password",
+            SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
+            r.appendChild(emaill),
+            r.appendChild(email),
+            r.appendChild(x),
+            t.appendChild(r);
+        }
+		if ("modal" === SFIDWidget.config.mode) {
+            var T = document.createElement("div");
+            T.className = "sfid-lightbox",
+            T.id = "sfid-changepw-overlay",
+            T.setAttribute("onClick", "cancelChangePassword()");
+            var P = document.createElement("div");
+            P.id = "sfid-wrapper",
+            P.onclick = function (e) {
+                (e = e || window.event).stopPropagation ? e.stopPropagation() : e.cancelBubble = !0
+            },
+            P.appendChild(t),
+            T.appendChild(P),
+            document.body.appendChild(T)
+        } else
+            e.appendChild(t)		
+	}
+	function startChangePassword() {
+		// Call Salesforce Change Password
+		var payload = "";
+		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "newPassword" : "' + document.getElementById("sfid-email").value + '"}';
+		
+		var xhttp = new XMLHttpRequest();
+		//xhttp.responseType = 'json';
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			   //alert(xhttp.responseText);
+			   var regResult = JSON.parse(xhttp.responseText);			   
+			   if (regResult.success) {
+				 if (regResult.success = 'Yes') {
+					alert("Password Changed.");
+					cancelPasswordReset();
+				 } else {
+					alert("There was a problem changing your password"); 
+				 }				 				 
+			   } else {
+				document.getElementById("sfid-error").innerHTML = 'Error changing Password.';
+				showError();
+			   };
+			};
+			if (this.readyState == 4 && this.status == 400) {
+			   console.log(xhttp.responseText);
+			   var regResult = JSON.parse(xhttp.responseText);
+			   document.getElementById("sfid-error").innerHTML = regResult.message;
+			   showError();
+			};
+			if (this.readyState == 4 && this.status == 500) {
+			   console.log(xhttp.responseText);
+			   document.getElementById("sfid-error").innerHTML = 'Error 500: Bump in the Road.';
+			   showError();
+			};
+		};
+//		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/login/CheckPasswordResetEmail", true);
+		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
+		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+		xhttp.setRequestHeader("crossOrigin", "true");
+		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
+		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
+		xhttp.send(payload);		
+	}
+	function cancelChangePassword() {
+                var e = document.getElementById("sfid-changepw-overlay");
+                e.style.display = "none";
+                var t = document.getElementById("sfid-changePW-button");
+                e.parentNode && e.parentNode.removeChild(e),
+                t && t.focus()
+    }
 	</script>
 	
   </body>
