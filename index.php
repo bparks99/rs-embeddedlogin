@@ -838,14 +838,14 @@
             emaill.className = "sfid-button-label",
             emaill.innerText = "Email Address";
 			var password = document.createElement("input");
-            email.className = "sfid-wide sfid-mb12",
-            email.type = "password",
-            email.name = "password",
-            email.id = "sfid-password";
+            password.className = "sfid-wide sfid-mb12",
+            password.type = "password",
+            password.name = "password",
+            password.id = "sfid-password";
             var passwordl = document.createElement("LABEL");
-            emaill.htmlFor = password.id,
-            emaill.className = "sfid-button-label",
-            emaill.innerText = "Password";
+            passwordl.htmlFor = password.id,
+            passwordl.className = "sfid-button-label",
+            passwordl.innerText = "New Password";
 
             (x = document.createElement("input")).className = "sfid-button sfid-wide sfid-mb16",
             x.type = "submit",
@@ -854,6 +854,8 @@
             SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
             r.appendChild(emaill),
             r.appendChild(email),
+            r.appendChild(passwordl),
+            r.appendChild(password),
             r.appendChild(x),
             t.appendChild(r);
         }
