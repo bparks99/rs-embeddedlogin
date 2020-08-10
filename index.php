@@ -878,7 +878,7 @@
 	function startChangePassword() {
 		// Call Salesforce Change Password
 		var payload = "";
-		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "newPassword" : "' + document.getElementById("sfid-password").value + '"}';
+		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '"}';
 		
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
