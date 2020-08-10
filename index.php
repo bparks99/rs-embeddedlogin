@@ -803,15 +803,15 @@
     }
 	function showChangePassword() {
 		var t = document.createElement('div'); 
-	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor && (t.style.backgroundColor = SFIDWidget.authconfig.LoginPage.BackgroundColor), "modal" === SFIDWidget.config.mode && null != SFIDWidget.authconfig.LoginPage.LogoUrl) {
+	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor ), "modal" === SFIDWidget.config.mode) {
             var n = document.createElement("div");
             n.id = "sfid-logo_wrapper",
             n.className = "sfid-standard_logo_wrapper sfid-mt12";
-            var i = document.createElement("img");
-            i.src = SFIDWidget.authconfig.LoginPage.LogoUrl,
-            i.className = "sfid-standard_logo",
-            i.alt = "Salesforce",
-            n.appendChild(i);
+            //var i = document.createElement("img");
+            //i.src = SFIDWidget.authconfig.LoginPage.LogoUrl,
+            //i.className = "sfid-standard_logo",
+            //i.alt = "Salesforce",
+            //n.appendChild(i);
             var o = document.createElement("h2");
             o.id = "dialogTitle";
             var d = document.createTextNode("Change Password");
@@ -851,7 +851,7 @@
             x.type = "submit",
             x.id = "sfid-pwchangesubmit",
             x.value = "Change Password",
-            SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
+            //SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
             r.appendChild(emaill),
             r.appendChild(email),
             r.appendChild(passwordl),
