@@ -803,7 +803,7 @@
     }
 	function showChangePassword() {
 		var t = document.createElement('div'); 
-	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor ), "modal" === SFIDWidget.config.mode) {
+	 	if ("modal" === SFIDWidget.config.mode ? t.id = "sfid-content" : "inline" === SFIDWidget.config.mode && (t.id = "sfid-inline-content"), SFIDWidget.config.useCommunityBackgroundColor , "modal" === SFIDWidget.config.mode) {
             var n = document.createElement("div");
             n.id = "sfid-logo_wrapper",
             n.className = "sfid-standard_logo_wrapper sfid-mt12";
