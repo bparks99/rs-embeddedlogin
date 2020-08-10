@@ -910,7 +910,6 @@
 			   showError();
 			};
 		};
-		alert(SFIDWidget.openid_response.access_token);
 //		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/login/CheckPasswordResetEmail", true);
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
