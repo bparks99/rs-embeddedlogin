@@ -915,7 +915,7 @@
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
-		xhttp.setRequestHeader("Access-Control-Allow-Methods", "POST");
+		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token, Access-Control-Allow-Credentials");
 		xhttp.setRequestHeader('Authorization', 'OAuth ' + SFIDWidget.openid_response.access_token);
 		
