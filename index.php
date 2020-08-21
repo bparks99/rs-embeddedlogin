@@ -879,7 +879,7 @@
 		// Call Salesforce Change Password
 		var payload = "";
 		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '"}';
-		alert(SFIDWidget.openid_response.access_token);
+		
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
@@ -912,7 +912,7 @@
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		xhttp.withCredentials = true;
-		xhttp.setRequestHeader("Content-Type", "application/json");
+		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		//xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
