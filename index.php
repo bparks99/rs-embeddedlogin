@@ -912,7 +912,7 @@
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		xhttp.withCredentials = true;
-		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp.setRequestHeader("Content-Type", "application/json");
 		//xhttp.setRequestHeader("crossOrigin", "true");
 		//xhttp.setRequestHeader("Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Accept", "application/json");
