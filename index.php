@@ -913,9 +913,9 @@
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		xhttp.withCredentials = true;
 		xhttp.setRequestHeader("Content-Type", "application/json");
-		xhttp.setRequestHeader("crossOrigin", "true");
+		//xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
-		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST");
+		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token, Access-Control-Allow-Credentials");
 		xhttp.setRequestHeader('Authorization', 'Bearer ' + SFIDWidget.openid_response.access_token);
 		
