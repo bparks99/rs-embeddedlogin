@@ -880,7 +880,7 @@
 		var payload = "";
 		//payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '"}';
 		payload = 'access_token='+ SFIDWidget.openid_response.access_token + '&username='+ encodeURIComponent(SFIDWidget.openid_response.username) + '&changeToPassword=' + encodeURIComponent(document.getElementById("sfid-password").value);
-		
+		alert(payload);
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
