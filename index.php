@@ -878,8 +878,8 @@
 	function startChangePassword() {
 		// Call Salesforce Change Password
 		var payload = "";
-		//payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '"}';
-		payload = 'access_token='+ SFIDWidget.openid_response.access_token + '&username='+ encodeURIComponent(SFIDWidget.openid_response.username) + '&changeToPassword=' + encodeURIComponent(document.getElementById("sfid-password").value);
+		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '", "access_token" : "' + SFIDWidget.openid_response.access_token + '"}';
+		//payload = 'access_token='+ SFIDWidget.openid_response.access_token + '&username='+ encodeURIComponent(SFIDWidget.openid_response.username) + '&changeToPassword=' + encodeURIComponent(document.getElementById("sfid-password").value);
 		alert(payload);
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
@@ -913,7 +913,7 @@
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		//xhttp.withCredentials = true;
-		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp.setRequestHeader("Content-Type", "application/json");
 		xhttp.setRequestHeader("Accept", "application/json");
 		//xhttp.setRequestHeader('Authorization', 'Bearer ' + SFIDWidget.openid_response.access_token);
 		
