@@ -853,7 +853,7 @@
             verifypassword.id = "sfid-verifypassword";
             var vpasswordl = document.createElement("LABEL");
             vpasswordl.htmlFor = verifypassword.id,
-            vpassvwordl.className = "sfid-button-label",
+            vpasswordl.className = "sfid-button-label",
             vpasswordl.innerText = "Verify Password";
 
             (x = document.createElement("input")).className = "sfid-button sfid-wide sfid-mb16",
