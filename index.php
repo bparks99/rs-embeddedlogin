@@ -879,7 +879,7 @@
 		// Call Salesforce Change Password
 		var payload = "";
 		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '"}';
-		
+		//payload = 'username='+ SFIDWidget.openid_response.username + '&changeToPassword=' + document.getElementById("sfid-password").value
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
@@ -912,13 +912,13 @@
 		};
 		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
 		//xhttp.withCredentials = true;
-		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp.setRequestHeader("Content-Type", "application/json");
 		//xhttp.setRequestHeader("crossOrigin", "true");
 		//xhttp.setRequestHeader("Origin", "https://rs-embeddedlogin.herokuapp.com");
 		xhttp.setRequestHeader("Accept", "application/json");
 		//xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 		//xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token, Access-Control-Allow-Credentials");
-		xhttp.setRequestHeader('Authorization', 'Bearer ' + SFIDWidget.openid_response.access_token);
+		xhttp.setRequestHeader('Authorization', 'Bearer ' + EncodingUtil.urlEncode(SFIDWidget.openid_response.access_token,'UTF-8'));
 		
 		xhttp.send(payload);		
 	}
