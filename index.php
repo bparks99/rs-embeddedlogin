@@ -918,7 +918,8 @@
 		xhttp.setRequestHeader("Accept", "application/json");
 		//xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 		//xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token, Access-Control-Allow-Credentials");
-		xhttp.setRequestHeader('Authorization', 'Bearer ' + EncodingUtil.urlEncode(SFIDWidget.openid_response.access_token,'UTF-8'));
+		//xhttp.setRequestHeader('Authorization', 'Bearer ' + EncodingUtil.urlEncode(SFIDWidget.openid_response.access_token,'UTF-8'));
+		xhttp.setRequestHeader('Authorization', 'Bearer ' + SFIDWidget.openid_response.access_token);
 		
 		xhttp.send(payload);		
 	}
