@@ -878,7 +878,7 @@
 	function startChangePassword() {
 		// Call Salesforce Change Password
 		var payload = "";
-		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '", "access_token" : "' + SFIDWidget.openid_response.access_token + '"}';
+		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '", "access_token" : "' + decodeURIComponent(SFIDWidget.openid_response.access_token) + '"}';
 		//payload = 'access_token='+ SFIDWidget.openid_response.access_token + '&username='+ encodeURIComponent(SFIDWidget.openid_response.username) + '&changeToPassword=' + encodeURIComponent(document.getElementById("sfid-password").value);
 		alert(payload);
 		var xhttp = new XMLHttpRequest();
@@ -915,7 +915,7 @@
 		//xhttp.withCredentials = true;
 		xhttp.setRequestHeader("Content-Type", "application/json");
 		xhttp.setRequestHeader("Accept", "application/json");
-		//xhttp.setRequestHeader('Authorization', 'Bearer ' + SFIDWidget.openid_response.access_token);
+		xhttp.setRequestHeader('Authorization', 'Bearer ' + decodeURIComponent(SFIDWidget.openid_response.access_token));
 		
 		xhttp.send(payload);		
 	}
