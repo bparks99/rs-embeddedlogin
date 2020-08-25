@@ -828,7 +828,7 @@
         if (a.className = "sfid-mb1", a.id = "sfid-error", a.innerHTML = "We can\'t Change your password.", a.style.display = "none", a.setAttribute("role", "alert"), t.appendChild(a)) {
             var r = document.createElement("form");
             r.setAttribute("onSubmit", "startChangePassword();return false;");
-            var email = document.createElement("input");
+/*            var email = document.createElement("input");
             email.className = "sfid-wide sfid-mb12",
             email.type = "text",
             email.name = "email",
@@ -837,6 +837,7 @@
             emaill.htmlFor = email.id,
             emaill.className = "sfid-button-label",
             emaill.innerText = "Email Address";
+*/
 			var password = document.createElement("input");
             password.className = "sfid-wide sfid-mb12",
             password.type = "password",
@@ -861,8 +862,8 @@
             x.id = "sfid-pwchangesubmit",
             x.value = "Change Password",
             //SFIDWidget.config.useCommunityPrimaryColor && (x.style.backgroundColor = SFIDWidget.authconfig.LoginPage.PrimaryColor),
-            r.appendChild(emaill),
-            r.appendChild(email),
+            //r.appendChild(emaill),
+            //r.appendChild(email),
             r.appendChild(passwordl),
             r.appendChild(password),
             r.appendChild(vpasswordl),
@@ -889,11 +890,10 @@
 	function startChangePassword() {
 		// Call Salesforce Change Password
 		var payload = "";
-		payload = '{"username" : "' + document.getElementById("sfid-email").value + '", "changeToPassword" : "' + document.getElementById("sfid-password").value + '", "verifyPassword" : "' + document.getElementById("sfid-verifypassword").value + '"}';
+		payload = '{"changeToPassword" : "' + document.getElementById("sfid-password").value + '", "verifyPassword" : "' + document.getElementById("sfid-verifypassword").value + '"}';
 		//payload = 'access_token='+ SFIDWidget.openid_response.access_token + '&username='+ encodeURIComponent(SFIDWidget.openid_response.username) + '&changeToPassword=' + encodeURIComponent(document.getElementById("sfid-password").value);
-		alert(payload);
+
 		var xhttp = new XMLHttpRequest();
-		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			   //alert(xhttp.responseText);
