@@ -429,7 +429,8 @@
 		payload = payload + ' , "source_code" : "' + document.getElementById("source_code").value + '"';
 		payload = payload + ' , "password" : "' + document.getElementById("sfid-pwd").value + '"';
 		payload = payload + ' , "confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
-		payload = payload + ' , "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
+		payload = payload + ' , "startUrl" : "' + encodeURIComponent(meta[name="salesforce-redirect-uri"])+ '"';
+//		payload = payload + ' , "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
 		payload = payload + ' , "includePassword" : true}';
 		
 		var xhttp = new XMLHttpRequest();
@@ -457,10 +458,10 @@
 			   showError();
 			};
 		};
-		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/SelfReg/V1/", true);
+		xhttp.open("POST", meta[name="salesforce-community"] + "/services/apexrest/SelfReg/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
-		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
+		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
 		xhttp.send(payload);
@@ -891,7 +892,6 @@
 		// Call Salesforce Change Password
 		var payload = "";
 		payload = '{"changeToPassword" : "' + document.getElementById("sfid-password").value + '", "verifyPassword" : "' + document.getElementById("sfid-verifypassword").value + '"}';
-		//payload = 'access_token='+ SFIDWidget.openid_response.access_token + '&username='+ encodeURIComponent(SFIDWidget.openid_response.username) + '&changeToPassword=' + encodeURIComponent(document.getElementById("sfid-password").value);
 
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
