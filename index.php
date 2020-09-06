@@ -459,7 +459,7 @@
 			   showError();
 			};
 		};
-		xhttp.open("POST", meta[name="salesforce-community"] + "/services/apexrest/SelfReg/V1/", true);
+		xhttp.open("POST", document.querySelector('meta[name="salesforce-community"]').content + "/services/apexrest/SelfReg/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
 		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>");
