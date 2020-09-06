@@ -437,7 +437,7 @@
 		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-			   //alert(xhttp.responseText);
+			   alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.userid) {
 				 authenticateReg();  
@@ -452,7 +452,7 @@
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
-			if (this.readyState == 4 && this.status == 500) {
+			if (this.readyState == 4 && (this.status != 200 || this.status != 400)) {
 			   console.log(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to register.';
 			   showError();
