@@ -337,6 +337,7 @@
             r.appendChild(cpw),
             r.appendChild(x),
             t.appendChild(r);
+			alert("here 1");
         }
         var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
         D = SFIDWidget.authconfig.AuthProviders.length,
@@ -415,13 +416,14 @@
             },
             P.appendChild(t),
             T.appendChild(P),
-            document.body.appendChild(T)
-        } else
-            e.appendChild(t)
-
+            document.body.appendChild(T);
+        } else {
+            e.appendChild(t);
+		}
 	}
 	function startRegistration() {
 		// Call Salesforce Login
+		alert("here 2");
 		var payload = "";
 		payload = '{"firstname" : "' + document.getElementById("sfid-fname").value + '"';
 		payload = payload + ' , "lastname" : "' + document.getElementById("sfid-lname").value + '"';
@@ -432,7 +434,7 @@
 		payload = payload + ' , "startUrl" : "' + encodeURIComponent(meta[name="salesforce-redirect-uri"])+ '"';
 //		payload = payload + ' , "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
 		payload = payload + ' , "includePassword" : true}';
-		
+		alert(payload);
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
