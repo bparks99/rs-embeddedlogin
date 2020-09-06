@@ -453,7 +453,7 @@
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
-			if (this.readyState == 4 && (this.status != 200 || this.status != 400)) {
+			if (this.readyState == 4 && (this.status != 200 && this.status != 400)) {
 			   console.log(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to register.';
 			   showError();
@@ -606,17 +606,17 @@
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
-			if (this.readyState == 4 && this.status == 500) {
+			if (this.readyState == 4 && (this.status != 200 && this.status != 400)) {
 			   console.log(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = 'Bump in the Road, please call into the call center to Reset your Password.';
 			   showError();
 			};
 		};
 //		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/login/CheckPasswordResetEmail", true);
-		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/ForgotPassword/V1/", true);
+		xhttp.open("POST", document.querySelector('meta[name="salesforce-community"]').content + "/services/apexrest/ForgotPassword/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
-		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://rs-embeddedlogin.herokuapp.com");
+		xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>");
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
 		xhttp.send(payload);		
@@ -919,13 +919,13 @@
 			   document.getElementById("sfid-error").innerHTML = regResult.message;
 			   showError();
 			};
-			if (this.readyState == 4 && this.status == 500) {
+			if (this.readyState == 4 && (this.status != 200 && this.status != 400)) {
 			   console.log(xhttp.responseText);
 			   document.getElementById("sfid-error").innerHTML = 'Error 500: Bump in the Road.';
 			   showError();
 			};
 		};
-		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/services/apexrest/NewPassword/V1/", true);
+		xhttp.open("POST", document.querySelector('meta[name="salesforce-community"]').content + "/services/apexrest/NewPassword/V1/", true);
 		xhttp.setRequestHeader("Content-Type", "application/json");
 		xhttp.setRequestHeader("Accept", "application/json");
 		xhttp.setRequestHeader('Authorization', 'Bearer ' + decodeURIComponent(SFIDWidget.openid_response.access_token));
