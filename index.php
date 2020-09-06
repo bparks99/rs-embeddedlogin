@@ -423,7 +423,7 @@
 	}
 	function startRegistration() {
 		// Call Salesforce Login
-		alert("here 2");
+		try {
 		var payload = "";
 		payload = '{"firstname" : "' + document.getElementById("sfid-fname").value + '"';
 		payload = payload + ' , "lastname" : "' + document.getElementById("sfid-lname").value + '"';
@@ -467,6 +467,8 @@
 		xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
 		xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Headers, Content-Type, Authorization, X-Requested-With, X-Auth-Token");
 		xhttp.send(payload);
+		}
+		catch(ex) {console.log(ex.message())};
 	}		
 
 	function cancelReg() {
