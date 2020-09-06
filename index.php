@@ -337,7 +337,6 @@
             r.appendChild(cpw),
             r.appendChild(x),
             t.appendChild(r);
-			alert("here 1");
         }
         var I = SFIDWidget.authconfig.LoginPage.UsernamePasswordEnabled,
         D = SFIDWidget.authconfig.AuthProviders.length,
@@ -431,7 +430,7 @@
 		payload = payload + ' , "source_code" : "' + document.getElementById("source_code").value + '"';
 		payload = payload + ' , "password" : "' + document.getElementById("sfid-pwd").value + '"';
 		payload = payload + ' , "confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
-		payload = payload + ' , "startUrl" : "' + encodeURIComponent(meta[name="salesforce-redirect-uri"])+ '"';
+		payload = payload + ' , "startUrl" : "' + encodeURIComponent(document.querySelector('meta[name="salesforce-redirect-uri"]').content) + '"';
 //		payload = payload + ' , "startUrl" : "https%3A%2F%2Frs-embeddedlogin.herokuapp.com%2F_callback.php"';
 		payload = payload + ' , "includePassword" : true}';
 		alert(payload);
