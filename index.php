@@ -431,14 +431,14 @@
 		payload = payload + ' , "password" : "' + document.getElementById("sfid-pwd").value + '"';
 		payload = payload + ' , "confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
 		payload = payload + ' , "startUrl" : "' + encodeURIComponent(document.querySelector('meta[name="salesforce-redirect-uri"]').content) + '"';
-		payload = payload + ' , "MrktgEmailOptin" : "NO"';
+		payload = payload + ' , "MrktgEmailOptin" : "No"';
 		payload = payload + ' , "includePassword" : true}';
-		alert(payload);
+		//alert(payload);
 		var xhttp = new XMLHttpRequest();
 		//xhttp.responseType = 'json';
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-			   alert(xhttp.responseText);
+			   //alert(xhttp.responseText);
 			   var regResult = JSON.parse(xhttp.responseText);			   
 			   if (regResult.userid) {
 				 authenticateReg();  
@@ -612,7 +612,6 @@
 			   showError();
 			};
 		};
-//		xhttp.open("POST", "https://devtom-externalidentity.cs45.force.com/participants/s/login/CheckPasswordResetEmail", true);
 		xhttp.open("POST", document.querySelector('meta[name="salesforce-community"]').content + "/services/apexrest/ForgotPassword/V1/", true);
 		xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 		xhttp.setRequestHeader("crossOrigin", "true");
@@ -832,16 +831,6 @@
         if (a.className = "sfid-mb1", a.id = "sfid-error", a.innerHTML = "We can\'t Change your password.", a.style.display = "none", a.setAttribute("role", "alert"), t.appendChild(a)) {
             var r = document.createElement("form");
             r.setAttribute("onSubmit", "startChangePassword();return false;");
-/*            var email = document.createElement("input");
-            email.className = "sfid-wide sfid-mb12",
-            email.type = "text",
-            email.name = "email",
-            email.id = "sfid-email";
-            var emaill = document.createElement("LABEL");
-            emaill.htmlFor = email.id,
-            emaill.className = "sfid-button-label",
-            emaill.innerText = "Email Address";
-*/
 			var password = document.createElement("input");
             password.className = "sfid-wide sfid-mb12",
             password.type = "password",
