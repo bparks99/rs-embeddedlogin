@@ -431,7 +431,7 @@
 		payload = payload + ' , "password" : "' + document.getElementById("sfid-pwd").value + '"';
 		payload = payload + ' , "confirmPassword" : "' + document.getElementById("sfid-cpassword").value + '"';
 		payload = payload + ' , "startUrl" : "' + encodeURIComponent(document.querySelector('meta[name="salesforce-redirect-uri"]').content) + '"';
-		payload = payload + ' , "MrktgEmailOptin" : "NOT"';
+		payload = payload + ' , "MrktgEmailOptin" : "NO"';
 		payload = payload + ' , "includePassword" : true}';
 		alert(payload);
 		var xhttp = new XMLHttpRequest();
