@@ -38,7 +38,9 @@
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
         <div class="element-middle">
-          <img class="logo" src="images/fix-logotype.png" alt="Fix">
+                                                                          <a href="http://www.roadscholar.org">
+                                                                    <img src="http://images.roadscholar.org/educational-travel/Other/transactional_logo.png"
+                                                                        height="30" width="208" border="0"></a>
           <br>
           <span class="logo-text">Fine Coffee Kits</span>
         </div>
