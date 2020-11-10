@@ -39,7 +39,7 @@
         <div class="element-left"></div>
         <div class="element-middle">
                                                                           <a href="http://www.roadscholar.org">
-                                                                    <img src="http://images.roadscholar.org/educational-travel/Other/transactional_logo.png"
+                                                                    <img src="https://roadscholar-iv-prod.azurewebsites.net/publishedmedia/86e3tvphpe142ophc2si/ccm-rs-logo.png"
                                                                         height="30" width="208" border="0"></a>
           <br>
           <span class="logo-text">Fine Coffee Kits</span>
