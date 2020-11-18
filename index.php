@@ -781,7 +781,6 @@
                 i.onreadystatechange = function () {
                     var e = this.DONE || 4;
                     if (this.readyState === e) {
-						alert(i.responseText);
                         var t = JSON.parse(i.responseText);
                         if ("invalid" === t.result) {
                             showError(), document.getElementById("sfid-newloginsubmit").disabled = !1, document.getElementById("sfid-newloginsubmit").className = "sfid-button sfid-wide sfid-mb16";
